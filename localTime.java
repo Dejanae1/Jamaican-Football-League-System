@@ -1,0 +1,6 @@
+/**
+ * localTime
+ */
+public class localTime {
+
+}
