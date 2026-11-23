@@ -16,7 +16,7 @@ public class Player extends Person
     private FootballTeam team;
 
     // Default Constructor
-    public Player()
+    public Player(String pl01, String ryan, String clarke, LocalDate dob, int jersey, String position)
     {
         super();
         this.jerseyNumber = 0;
