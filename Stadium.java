@@ -96,6 +96,9 @@ public class Stadium{
     {
         return ticketPrice;
     }
+    public ArrayList<Fixtures> getFixturesList() {
+            return fixturesList;
+    }
 
     // Validate Stadium
     public boolean validStadium()
