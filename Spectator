@@ -1,0 +1,28 @@
+import java.time.LocalDate;
+
+public class Spectator extends Person
+{
+    public Spectator()
+    {
+        super();
+    }
+
+    public Spectator(String personID, String firstName, String lastName, LocalDate dateOfBirth)
+            throws InvalidInputException
+    {
+        super(personID, firstName, lastName, dateOfBirth);
+    }
+
+    @Override
+    public String getRole()
+    {
+        return "Spectator";
+    }
+
+    @Override
+    public String toCsv()
+    {
+        return "SPECTATOR," + getPersonID() + "," + getFirstName() + "," + getLastName() + ","
+                + getDateOfBirth();
+    }
+}
