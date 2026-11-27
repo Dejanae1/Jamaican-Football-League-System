@@ -1,25 +1,70 @@
-/** Placeholder base exception. Member A owns the real one: delete this class (keep the four
- *  below) and change their "extends LeagueException" to extend A's base class instead. */
 public class LeagueException extends Exception {
-    public LeagueException(String message) { super(message); }
+
+    public LeagueException(String message) {
+        super(message);
+    }
 }
 
-/** Negative quantity/price, bad format, duplicate id, etc. */
+// Invalid or incomplete data
 class InvalidDataException extends LeagueException {
-    public InvalidDataException(String message) { super(message); }
+
+    public InvalidDataException(String message) {
+        super(message);
+    }
 }
 
-/** Ticket sales would exceed stadium seating capacity. */
+// Invalid match score
+class InvalidScoreException extends LeagueException {
+
+    public InvalidScoreException(String message) {
+        super(message);
+    }
+}
+
+// Team is not eligible to play
+class TeamNotEligibleException extends LeagueException {
+
+    public TeamNotEligibleException(String message) {
+        super(message);
+    }
+}
+
+// Scheduling conflict
+class SchedulingConflictException extends LeagueException {
+
+    public SchedulingConflictException(String message) {
+        super(message);
+    }
+}
+
+// Ticket sales exceed stadium capacity
 class CapacityExceededException extends LeagueException {
-    public CapacityExceededException(String message) { super(message); }
+
+    public CapacityExceededException(String message) {
+        super(message);
+    }
 }
 
-/** Payment is less than the total due. */
+// Payment is insufficient
 class InsufficientPaymentException extends LeagueException {
-    public InsufficientPaymentException(String message) { super(message); }
+
+    public InsufficientPaymentException(String message) {
+        super(message);
+    }
 }
 
-/** Not enough stock for the requested quantity. */
+// Requested stock is unavailable
 class InsufficientStockException extends LeagueException {
-    public InsufficientStockException(String message) { super(message); }
+
+    public InsufficientStockException(String message) {
+        super(message);
+    }
+}
+
+// Duplicate registration
+class DuplicateRegistrationException extends LeagueException {
+
+    public DuplicateRegistrationException(String message) {
+        super(message);
+    }
 }
