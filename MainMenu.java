@@ -1,12 +1,15 @@
-
 import java.util.Scanner;
 
 public class MainMenu {
 
-    private static final Scanner input = new Scanner(System.in);
+    private static final Scanner input =
+            new Scanner(System.in);
 
     private static final FootballLeague league =
             new FootballLeague();
+
+    private static final TeamManager teamManager =
+            new TeamManager();
 
     public static void main(String[] args) {
 
@@ -38,15 +41,21 @@ public class MainMenu {
                     break;
 
                 case 4:
+                    changeTeamStatus();
+                    break;
+
+                case 5:
                     running = false;
+
                     System.out.println(
                         "Thank you for using the KPFL System."
                     );
+
                     break;
 
                 default:
                     System.out.println(
-                        "Invalid choice. Please select 1-4."
+                        "Invalid choice. Please select 1-5."
                     );
             }
         }
@@ -54,16 +63,19 @@ public class MainMenu {
         input.close();
     }
 
+    // Display the main menu
     private static void displayMenu() {
 
         System.out.println("\n========== MAIN MENU ==========");
         System.out.println("1. Register Football Team");
         System.out.println("2. Record Match Result");
         System.out.println("3. View League Standings");
-        System.out.println("4. Exit");
+        System.out.println("4. Suspend/Reinstate Team");
+        System.out.println("5. Exit");
         System.out.println("===============================");
     }
 
+    // Register a new team
     private static void registerTeam() {
 
         try {
@@ -82,6 +94,7 @@ public class MainMenu {
             FootballTeam team =
                     new FootballTeam(id, name, town);
 
+            teamManager.registerTeam(team);
             league.addTeam(team);
 
             System.out.println(
@@ -96,6 +109,7 @@ public class MainMenu {
         }
     }
 
+    // Record a match result
     private static void recordMatchResult() {
 
         try {
@@ -130,11 +144,13 @@ public class MainMenu {
         } catch (Exception e) {
 
             System.out.println(
-                "An unexpected error occurred: " + e.getMessage()
+                "An unexpected error occurred: "
+                + e.getMessage()
             );
         }
     }
 
+    // Display league standings
     private static void displayStandings() {
 
         System.out.println("\n--- LEAGUE STANDINGS ---");
@@ -142,6 +158,42 @@ public class MainMenu {
         System.out.println(league.standingsReport());
     }
 
+    // Suspend or reinstate a team
+    private static void changeTeamStatus() {
+
+        System.out.println("\n--- TEAM STATUS MANAGEMENT ---");
+
+        System.out.print("Enter Team ID: ");
+        String teamID = input.nextLine();
+
+        FootballTeam team =
+                teamManager.findTeam(teamID);
+
+        if (team == null) {
+
+            System.out.println("Team not found.");
+            return;
+        }
+
+        if (team.isSuspended()) {
+
+            team.setSuspended(false);
+
+            System.out.println(
+                team.getTeamName() + " has been reinstated."
+            );
+
+        } else {
+
+            team.setSuspended(true);
+
+            System.out.println(
+                team.getTeamName() + " has been suspended."
+            );
+        }
+    }
+
+    // Read and validate integer input
     private static int readInteger(String message) {
 
         while (true) {
@@ -150,12 +202,15 @@ public class MainMenu {
 
             try {
 
-                int value = Integer.parseInt(input.nextLine());
+                int value =
+                        Integer.parseInt(input.nextLine());
 
                 if (value < 0) {
+
                     System.out.println(
                         "Please enter a non-negative number."
                     );
+
                     continue;
                 }
 
