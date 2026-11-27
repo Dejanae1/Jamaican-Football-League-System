@@ -1,8 +1,9 @@
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-public class Stadium{
+public class Stadium {
 
     // Attributes
     private String stadiumID;
@@ -16,27 +17,25 @@ public class Stadium{
     private ArrayList<Fixtures> fixturesList = new ArrayList<>();
 
     // Field Conditions Enum
-    public enum FieldCondition 
-    {
+    public enum FieldCondition {
         GOOD, FAIR, POOR
     }
 
     // Default Constructor
-    public Stadium()
-    {
+    public Stadium() {
         this.stadiumID = "";
         this.stadiumName = "";
         this.location = "";
         this.seatingCapacity = 0;
-        this.fieldCondition = Stadium.FieldCondition.GOOD;
+        this.fieldCondition = FieldCondition.GOOD;
         this.ticketPrice = 0.0;
     }
 
     // Parameterized Constructor
-    public Stadium (String stadiumID, String stadiumName,
+    public Stadium(String stadiumID, String stadiumName,
                    String location, int seatingCapacity,
-                   FieldCondition fieldCondition, double ticketPrice)
-    {
+                   FieldCondition fieldCondition, double ticketPrice) {
+
         this.stadiumID = stadiumID;
         this.stadiumName = stadiumName;
         this.location = location;
@@ -44,87 +43,89 @@ public class Stadium{
         this.fieldCondition = fieldCondition;
         this.ticketPrice = ticketPrice;
     }
-    
+
     // Mutator Methods
-    public void setStadiumID(String stadiumID)
-    {
+    public void setStadiumID(String stadiumID) {
         this.stadiumID = stadiumID;
     }
-    public void setStadiumName(String stadiumName)
-    {
+
+    public void setStadiumName(String stadiumName) {
         this.stadiumName = stadiumName;
     }
-    public void setlocation(String location)
-    {
+
+    public void setlocation(String location) {
         this.location = location;
     }
-    public void setseatingCapacity(int seatingCapacity)
-    {
+
+    public void setseatingCapacity(int seatingCapacity) {
         this.seatingCapacity = seatingCapacity;
     }
-    public void setfieldCondition(FieldCondition fieldCondition)
-    {
+
+    public void setfieldCondition(FieldCondition fieldCondition) {
         this.fieldCondition = fieldCondition;
     }
-    public void setticketPrice(double ticketPrice)
-    {
+
+    public void setticketPrice(double ticketPrice) {
         this.ticketPrice = ticketPrice;
     }
-    
+
     // Accessor Methods
-    public String getstadiumID1()
-    {
+    public String getstadiumID1() {
         return stadiumID;
     }
-    public String getstadiumName()
-    {
+
+    public String getstadiumName() {
         return stadiumName;
     }
-    public String getlocation()
-    {
+
+    public String getStadiumName() {
+        return stadiumName;
+    }
+
+    public String getlocation() {
         return location;
     }
-    public int getseatingCapacity()
-    {
+
+    public int getseatingCapacity() {
         return seatingCapacity;
     }
-    public  FieldCondition getfieldCondition()
-    {
+
+    public int getCapacity() {
+        return seatingCapacity;
+    }
+
+    public FieldCondition getfieldCondition() {
         return fieldCondition;
     }
-    public double getticketPrice()
-    {
+
+    public double getticketPrice() {
         return ticketPrice;
     }
+
     public ArrayList<Fixtures> getFixturesList() {
-            return fixturesList;
+        return fixturesList;
     }
 
     // Validate Stadium
-    public boolean validStadium()
-    {
-        if (stadiumID == null || stadiumID.isEmpty()) 
-        {
+    public boolean validStadium() {
+
+        if (stadiumID == null || stadiumID.isEmpty()) {
             return false;
         }
 
-        if (stadiumName == null || stadiumName.isEmpty()) 
-        {
+        if (stadiumName == null || stadiumName.isEmpty()) {
             return false;
         }
 
-        if (location == null || location.isEmpty()) 
-        {
+        if (location == null || location.isEmpty()) {
             return false;
         }
 
-        if (seatingCapacity <= 0 || ticketPrice < 0) 
-        {
+        if (seatingCapacity <= 0 || ticketPrice < 0) {
             return false;
         }
 
-        if (fieldCondition == null) 
-        {
+        if (fieldCondition == null) {
             return false;
         }
 
@@ -132,7 +133,6 @@ public class Stadium{
     }
 
     // Update Stadium
-
     public void updateStadium(String stadiumName, String location,
                               int seatingCapacity,
                               FieldCondition fieldCondition,
@@ -155,9 +155,7 @@ public class Stadium{
         }
     }
 
-
     // Display Stadium
-
     public void displayStadium() {
 
         System.out.println("========== STADIUM DETAILS ==========");
@@ -170,9 +168,7 @@ public class Stadium{
         System.out.println("Ticket Price: " + ticketPrice);
     }
 
-
     // Check Stadium Availability
-
     public boolean checkAvailability(LocalDate date, LocalTime time) {
 
         if (date == null || time == null) {
@@ -191,9 +187,7 @@ public class Stadium{
         return true;
     }
 
-
     // Add Fixture to Stadium
-
     public void addFixture(Fixtures fixture) {
 
         if (fixture != null && !fixturesList.contains(fixture)) {
