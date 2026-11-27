@@ -194,4 +194,11 @@ public class Stadium {
             fixturesList.add(fixture);
         }
     }
+    public int getCapacity() {
+    return seatingCapacity;
+}
+
+public String getStadiumName() {
+    return stadiumName;
+}
 }
