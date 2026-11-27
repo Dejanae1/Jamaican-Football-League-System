@@ -1,6 +1,5 @@
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.regex.MatchResult;
 
 public class Fixtures {
      private String fixtureID;
