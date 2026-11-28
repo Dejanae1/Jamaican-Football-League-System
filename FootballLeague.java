@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -6,6 +7,7 @@ public class FootballLeague {
 
     private final List<FootballTeam> teams = new ArrayList<>();
     private final List<Fixtures> fixtures = new ArrayList<>();
+    private final List<Stadium> stadiums = new ArrayList<>();
 
     // Add a team to the league
     public void addTeam(FootballTeam team)
@@ -43,6 +45,48 @@ public class FootballLeague {
     // Return all teams
     public List<FootballTeam> getTeams() {
         return new ArrayList<>(teams);
+    }
+
+    // Register a stadium
+    public void addStadium(Stadium stadium)
+            throws LeagueException {
+
+        if (stadium == null || !stadium.validStadium()) {
+            throw new InvalidDataException(
+                "Stadium information is invalid."
+            );
+        }
+
+        if (findStadium(stadium.getstadiumID1()) != null) {
+            throw new DuplicateRegistrationException(
+                "Stadium ID already exists: "
+                + stadium.getstadiumID1()
+            );
+        }
+
+        stadiums.add(stadium);
+    }
+
+    // Find a stadium by ID
+    public Stadium findStadium(String id) {
+
+        if (id == null) {
+            return null;
+        }
+
+        for (Stadium stadium : stadiums) {
+
+            if (stadium.getstadiumID1().equalsIgnoreCase(id)) {
+                return stadium;
+            }
+        }
+
+        return null;
+    }
+
+    // Return all registered stadiums
+    public List<Stadium> getStadiums() {
+        return new ArrayList<>(stadiums);
     }
 
     // Schedule a fixture
@@ -118,6 +162,9 @@ public class FootballLeague {
         }
 
         fixtures.add(fixture);
+
+        // Add the scheduled fixture to the stadium
+        fixture.getStadium().addFixture(fixture);
     }
 
     // Check whether a team is involved in an existing fixture
@@ -129,6 +176,10 @@ public class FootballLeague {
 
     // Find a fixture by ID
     public Fixtures findFixture(String id) {
+
+        if (id == null) {
+            return null;
+        }
 
         for (Fixtures fixture : fixtures) {
 
