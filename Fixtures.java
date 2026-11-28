@@ -168,16 +168,22 @@ public class Fixtures {
           return true;
      }
 
-     public void updateFixture(LocalDate newDate, LocalTime newTime)
-     {
-          if (newDate == null || newTime == null) 
-          {
-               this.matchDate = newDate;
-               this.kickOffTime = newTime;
-          }else {
-               System.out.println("Invalid date or time. Fixture not updated.");
-          }
-     }
+    public void updateFixture(LocalDate newDate, LocalTime newTime)
+{
+    if (newDate != null && newTime != null) {
+
+        this.matchDate = newDate;
+        this.kickOffTime = newTime;
+
+        System.out.println("Fixture updated successfully.");
+
+    } else {
+
+        System.out.println(
+            "Invalid date or time. Fixture not updated."
+        );
+    }
+}
 
      public void displayFixture()
      {
