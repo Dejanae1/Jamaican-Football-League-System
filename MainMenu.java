@@ -202,8 +202,8 @@ public class MainMenu {
 
             try {
 
-                int value =
-                        Integer.parseInt(input.nextLine());
+            int value =
+        Integer.parseInt(input.nextLine().trim());
 
                 if (value < 0) {
 
