@@ -150,13 +150,18 @@ public class MainMenu {
         }
     }
 
-    // Display league standings
-    private static void displayStandings() {
+   // Display league standings
+private static void displayStandings() {
 
-        System.out.println("\n--- LEAGUE STANDINGS ---");
+    System.out.println("\n--- LEAGUE STANDINGS ---");
 
-        System.out.println(league.standingsReport());
+    if (league.getTeams().isEmpty()) {
+        System.out.println("No teams have been registered yet.");
+        return;
     }
+
+    System.out.println(league.standingsReport());
+}
 
     // Suspend or reinstate a team
     private static void changeTeamStatus() {
